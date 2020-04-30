@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Dice Game</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="item">
+			<div class="block">
+				<h2>Create player</h2>
+				<label>Name</label>
+				<input type="text" id="player" />
+				<input id="create" type="button" onClick="createPlayer()" value="Add" />
+			</div>
+		</div>
+		<!-- <div class="item">
+			<div class="block">
+				<h2>Crear cuadro</h2>
+				<label>Nombre de tienda</label>
+				<input type="text" id="nameOfShop" />
+				<label>Nombre</label>
+				<input type="text" id="picture" />
+				<label>Autor</label>
+				<input type="role" id="author" /><br>
+				<input id="update" type="button" onClick="createPicture()" value="Añadir" />
+			</div>
+		</div> -->
+		<div class="block">
+			<h2>Players</h2>
+			<table id="tablePlayers">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Registration date</th>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+</body>
+
+</html>
