@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diceGame.models.Player;
@@ -22,14 +21,11 @@ public class PlayerController {
 	@Autowired
 	private PlayerRepository repository;
 	
-	@GetMapping("/players")
-	List<Player> all() {
-		return repository.findAll();
-	}
-	
 	@PostMapping("/players")
-	Player player(@RequestBody Player player, @RequestParam(value = "name", defaultValue = "Anonymous") String name) {
-		player.setName(name);
+	Player player(@RequestBody Player player) {
+		if (player.getName().isEmpty()) {
+			player.setName("Anonymous");
+		}
 		return repository.save(player);
 	}
 	
@@ -51,5 +47,19 @@ public class PlayerController {
 		return repository.findById(id);
 	}
 
+	@GetMapping("players/ranking")
+	List<Player> orderPlayersbySuccessPct() {
+		return repository.findAllByOrderBySuccesspctDesc();
+	}
+	
+	@GetMapping("players/ranking/winner")
+	Player findWinner() {
+		return repository.findFirstByOrderBySuccesspctDesc();
+	}
+	
+	@GetMapping("players/ranking/loser")
+	Player findLoser() {
+		return repository.findFirstByOrderBySuccesspctAsc();
+	}
 	
 }

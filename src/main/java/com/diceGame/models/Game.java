@@ -9,6 +9,10 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * @author kon
+ *
+ */
 @Entity
 public class Game {
 	
@@ -19,6 +23,8 @@ public class Game {
 	private Long dice1;
 	private Long dice2;
 	private Long result;
+	
+	private Boolean win = false;
 	
 	@ManyToOne
     @JoinColumn(name = "player_id")
@@ -59,6 +65,14 @@ public class Game {
 
 	public void setResult(Long result) {
 		this.result = result;
+	}
+
+	public Boolean getWin() {
+		return win;
+	}
+
+	public void setWin(Boolean win) {
+		this.win = win;
 	}
 
 	public Player getPlayer() {

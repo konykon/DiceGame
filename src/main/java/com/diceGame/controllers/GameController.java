@@ -16,19 +16,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diceGame.models.Game;
+import com.diceGame.models.Player;
 import com.diceGame.persistence.GameRepository;
 import com.diceGame.persistence.PlayerRepository;
 
 @RestController
 public class GameController {
-	
-	private Integer count = 0;
 
 	@Autowired
 	private PlayerRepository playerRepository;
 
 	@Autowired
 	private GameRepository gameRepository;
+	
+
+	@GetMapping("/players")
+	List<Player> allWithSuccessPct() {
+		for (Player player : playerRepository.findAll()) {
+			int countWin = 0;
+			int countLoss = 0;
+			int totalGames = 0;
+			for (Game game : gameRepository.findAll()) {
+				if (player.getId() == game.getPlayer().getId()) {
+					if (game.getWin()) {
+						countWin++;
+					} else {
+						countLoss++;
+					}
+					totalGames = countWin + countLoss;
+					player.setSuccessPct((double) ((countWin * 100) / totalGames));
+				}
+			}
+			playerRepository.save(player);
+		}
+		return playerRepository.findAll();
+	}
 
 	@GetMapping("/players/{player_id}/games")
 	public List<Game> getAllGamesByPlayerId(@PathVariable Long player_id) {
@@ -39,11 +61,8 @@ public class GameController {
 	public Optional<Object> addGame(@PathVariable Long player_id, @Valid @RequestBody Game game) {
 		return playerRepository.findById(player_id).map(player -> {
 			if (game.getResult() == 7) {
-				count = count+1;
-			} else if (player.getGames().size() == 0) {
-				count = 0;
-			}
-			player.setWins(count);
+				game.setWin(true);
+			} 
 			game.setPlayer(player);
 			return gameRepository.save(game);
 		});

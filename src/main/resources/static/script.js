@@ -24,19 +24,20 @@ function addCell(tr, val) {
     tr.appendChild(td);
 }
 
-function addRow(table, val_1, val_2, val_3, val_4) {
+function addRow(table, val_1, val_2, val_3, val_4, val_5) {
     let tr = document.createElement('tr');
     addCell(tr, val_1);
     addCell(tr, val_2);
     addCell(tr, val_3);
     addCell(tr, val_4);
+    addCell(tr, val_5);
     table.appendChild(tr);
 }
 
 function fillTable(data) {
     let table = document.getElementById('tablePlayers');
     data.forEach(player => {
-        addRow(table, player.id, player.name, player.date, `<p id=${player.id} onClick=editPlayer(this.id)>edit</p>`);
+        addRow(table, player.id, player.name, player.date, player.successPct, `<p id=${player.id} onClick=editPlayer(this.id)>edit</p>`);
     });
 }
 
@@ -82,6 +83,28 @@ function editPlayer(id) {
             });
         });
 }
+
+
+function rollDice() {
+    const dice = [...document.querySelectorAll(".die-list")];
+    dice.forEach(die => {
+      toggleClasses(die);
+      console.log(die);
+      die.dataset.roll = getRandomNumber(1, 6);
+    });
+  }
+  
+  function toggleClasses(die) {
+    die.classList.toggle("odd-roll");
+    die.classList.toggle("even-roll");
+  }
+  
+  function getRandomNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  
 
 // let found = false;
 //     let option;

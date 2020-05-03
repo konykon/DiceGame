@@ -40,8 +40,5 @@ GET /players/ranking/loser: retorna el jugador amb pitjor percentatge d’èxit.
 
 GET /players/ranking/winner: retorna el jugador amb pitjor percentatge d’èxit.
 
-4) Modificar exercici Joc de Daus:
 
-Per poder jugar al joc de daus ara es necessiten sis daus.
-
-En cas que el resultat de tots els daus sigui sis o cinc, 
+Animated 3D Dice Roll: https://codesandbox.io/u/ryancperry

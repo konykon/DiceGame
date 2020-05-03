@@ -29,19 +29,16 @@ public class Player {
 	private Set<Game> games;
 
 	@NonNull
-	private Integer wins = 0;
-
-	@NonNull
-	private double successPct = 0.0;
-
-	public Player() {
-
-	}
+	private double successpct = 0.0;
 
 	public Player(String name) {
 		setName(name);
 	}
+	
+	public Player() {
 
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -74,28 +71,12 @@ public class Player {
 		this.games = games;
 	}
 
-	public Integer getWins() {
-		if (games.size() == 0) {
-			wins = 0;
-		}
-		return wins;
-	}
-
-	public void setWins(Integer wins) {
-		this.wins = wins;
-	}
-
 	public double getSuccessPct() {
-		if (games.size() != 0) {
-			successPct = (getWins() * 100 / games.size());
-		} else {
-			successPct = 0.0;
-		}
-		return successPct;
+		return successpct;
 	}
 
-	public void setSuccessPct(double successPct) {
-		this.successPct = successPct;
+	public void setSuccessPct(double successpct) {
+		this.successpct = successpct;
 	}
 
 }
