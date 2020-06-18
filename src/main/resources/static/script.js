@@ -37,7 +37,8 @@ function addRow(table, val_1, val_2, val_3, val_4, val_5) {
 function fillTable(data) {
     let table = document.getElementById('tablePlayers');
     data.forEach(player => {
-        addRow(table, player.id, player.name, player.date, player.successPct, `<p id=${player.id} onClick=editPlayer(this.id)>edit</p>`);
+        let date = (player.date).split("T", 1);
+        addRow(table, player.id, player.name, date, player.successPct, `<p id=${player.id} onClick=editPlayer(this.id)>edit</p>`);
     });
 }
 

@@ -4,104 +4,110 @@
 <head>
 	<title>Dice Game</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="test.css" />
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="script.js"></script>
 </head>
 
 <body>
-	<div class="container">
-		<div class="item">
-			<div class="block">
-				<h2>Create player</h2>
-				<label>Name</label>
-				<input type="text" id="player" />
-				<input id="create" type="button" onClick="createPlayer()" value="Add" />
-
-				<h2>Players</h2>
-				<table id="tablePlayers">
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Registration date</th>
-						<th>Wins %</th>
-					</tr>
-				</table>
-			</div>
+	<div class="containerff">
+		<div class="header">
+			<h1>Dice Game</h1>
 		</div>
-		<div class="item">
+		<div class="block">
+			<h2>Create player</h2>
+			<label>Name</label>
+			<input type="text" id="player" />
+			<input id="create" type="button" class="btn btn-primary" onClick="createPlayer()" value="Add" />
+		</div>
+		<div class="gameInfo">
+			<h2>Players</h2>
+			<table id="tablePlayers" class="table table-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Registration date</th>
+					<th scope="col">Wins %</th>
+					<th scope="col"></th>
+				</tr>
+			</table>
+		</div>
+		<div class="dices">
 			<div class="dice">
 				<ol class="die-list even-roll" data-roll="1" id="die-1">
-				  <li class="die-item" data-side="1">
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="2">
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="3">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="4">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="5">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="6">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
+					<li class="die-item" data-side="1">
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="2">
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="3">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="4">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="5">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="6">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
 				</ol>
 				<ol class="die-list odd-roll" data-roll="1" id="die-2">
-				  <li class="die-item" data-side="1">
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="2">
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="3">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="4">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="5">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
-				  <li class="die-item" data-side="6">
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-					<span class="dot"></span>
-				  </li>
+					<li class="die-item" data-side="1">
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="2">
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="3">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="4">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="5">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
+					<li class="die-item" data-side="6">
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+						<span class="dot"></span>
+					</li>
 				</ol>
-			  </div>
-			  <button type="button" id="roll-button" onClick="rollDice()">Roll Dice</button>
+			</div>
+			<button type="button" id="roll-button" onClick="rollDice()">Roll Dice</button>
 		</div>
 	</div>
 </body>
